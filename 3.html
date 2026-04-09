@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditionals & Loops</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>🔄 Conditionals & Loops</h1>
+            <p>if-else, switch, for, while, do-while, break, continue</p>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>Conditional Statements:</h3>
+                <ul>
+                    <li><strong>if statement:</strong> Executes code block if condition is true</li>
+                    <li><strong>if-else:</strong> Executes one block if true, another if false</li>
+                    <li><strong>else-if ladder:</strong> Checks multiple conditions in sequence</li>
+                    <li><strong>switch statement:</strong> Multi-way decision based on value (works with integers and characters)</li>
+                </ul>
+
+                <h3>Loop Structures:</h3>
+                <ul>
+                    <li><strong>for loop:</strong> for(initialization; condition; increment) { } - Used when number of iterations is known</li>
+                    <li><strong>while loop:</strong> while(condition) { } - Condition checked before execution</li>
+                    <li><strong>do-while loop:</strong> do { } while(condition); - Executes at least once, then checks condition</li>
+                </ul>
+
+                <h3>Jump Statements:</h3>
+                <ul>
+                    <li><strong>break:</strong> Exits the loop or switch immediately</li>
+                    <li><strong>continue:</strong> Skips the rest of current iteration and moves to next</li>
+                </ul>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+int main() {
+    // if-else example
+    int marks = 75;
+    if (marks >= 90) {
+        printf("Grade A\n");
+    } else if (marks >= 75) {
+        printf("Grade B\n");  // Output: Grade B
+    } else {
+        printf("Grade C\n");
+    }
+    
+    // switch example
+    int day = 3;
+    switch(day) {
+        case 1: printf("Monday"); break;
+        case 2: printf("Tuesday"); break;
+        case 3: printf("Wednesday"); break;  // Output: Wednesday
+        default: printf("Other day");
+    }
+    
+    // for loop - print 1 to 5
+    printf("\nFor loop: ");
+    for(int i = 1; i <= 5; i++) {
+        printf("%d ", i);  // 1 2 3 4 5
+    }
+    
+    // while loop - even numbers
+    printf("\nWhile loop: ");
+    int i = 2;
+    while(i <= 10) {
+        printf("%d ", i);
+        i += 2;  // 2 4 6 8 10
+    }
+    
+    // do-while - runs at least once
+    printf("\nDo-while: ");
+    int j = 1;
+    do {
+        printf("%d ", j);
+        j++;
+    } while(j <= 5);  // 1 2 3 4 5
+    
+    // break and continue
+    printf("\nBreak example: ");
+    for(int k = 1; k <= 5; k++) {
+        if(k == 3) break;
+        printf("%d ", k);  // 1 2
+    }
+    
+    printf("\nContinue example: ");
+    for(int k = 1; k <= 5; k++) {
+        if(k == 3) continue;
+        printf("%d ", k);  // 1 2 4 5
+    }
+    
+    return 0;
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li>switch only works with int, char, enum - NOT float or string</li>
+                    <li>Don't forget <strong>break</strong> in switch (otherwise fall-through happens)</li>
+                    <li>do-while always executes at least once</li>
+                    <li>Infinite loop: for(;;) or while(1)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. What is the output of: for(int i=0;i<3;i++) printf("%d",i);</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) 012</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) 123</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) 0 1 2</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) 1 2 3</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. Which loop executes at least once even if condition is false?</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) for</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) while</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) do-while</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) All</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. What is the output? int x=5; while(x>0){printf("%d",x); x--;}</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) 54321</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) 12345</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) 5 4 3 2 1</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) 543210</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. Which statement is used to exit a loop immediately?</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) continue</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) exit</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) break</label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) return</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. What is the output? if(5>3) printf("A"); else printf("B");</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) B</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) A</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) AB</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) Error</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. In a switch statement, what happens without a break?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) Compiler error</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) Fall through to next case</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) Loop continues</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) Exits switch</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. How many times will this loop run? for(int i=0;i<10;i++) { if(i==5) break; }</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) 10</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) 5</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) 6</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) 4</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. What does continue statement do?</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) Exits loop</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) Skips rest of iteration</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) Restarts loop</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) Ends program</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. Output of: int i=0; while(i<2){i++; printf("%d",i);}</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) 01</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) 12</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) 012</label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) 123</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. Which is the correct syntax for do-while?</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) do { } while(condition);</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) do { } while condition;</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) do while(condition) { }</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) while(condition) do { }</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Write a program to check if a number is prime or not.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int n = 17, i, isPrime = 1;
+    for(i = 2; i <= n/2; i++) {
+        if(n % i == 0) {
+            isPrime = 0;
+            break;
+        }
+    }
+    if(isPrime) printf("%d is Prime", n);
+    else printf("%d is Not Prime", n);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Write a program to print multiplication table of any number using for loop.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int num = 7;
+    for(int i = 1; i <= 10; i++) {
+        printf("%d x %d = %d\n", num, i, num * i);
+    }
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Write a program to find factorial using while loop.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int n = 5, fact = 1, i = 1;
+    while(i <= n) {
+        fact *= i;
+        i++;
+    }
+    printf("Factorial of %d = %d", n, fact);
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'a', q2:'c', q3:'a', q4:'c', q5:'b', q6:'b', q7:'c', q8:'b', q9:'b', q10:'a'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
