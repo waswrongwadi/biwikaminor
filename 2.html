@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operators & Expressions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>🔧 Operators & Expressions</h1>
+            <p>Arithmetic, Relational, Logical Operators | Precedence Rules</p>
+        </div>
+
+        <!-- THEORY SECTION FIRST -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>What are Operators?</h3>
+                <p>Operators are symbols that tell the compiler to perform specific operations.</p>
+
+                <h3>Types of Operators:</h3>
+                <ul>
+                    <li><strong>Arithmetic Operators:</strong> +, -, *, /, % (modulus gives remainder)</li>
+                    <li><strong>Relational Operators:</strong> ==, !=, &lt;, &gt;, &lt;=, &gt;= (returns 1 for true, 0 for false)</li>
+                    <li><strong>Logical Operators:</strong> && (AND), || (OR), ! (NOT)</li>
+                    <li><strong>Assignment Operators:</strong> =, +=, -=, *=, /=</li>
+                    <li><strong>Increment/Decrement:</strong> ++ (adds 1), -- (subtracts 1)</li>
+                </ul>
+
+                <h3>Operator Precedence (Highest to Lowest):</h3>
+                <ol>
+                    <li><strong>( )</strong> - Parentheses</li>
+                    <li><strong>++ , -- , !</strong> - Unary operators</li>
+                    <li><strong>* , / , %</strong> - Multiplication, Division, Modulus</li>
+                    <li><strong>+ , -</strong> - Addition, Subtraction</li>
+                    <li><strong>&lt; , &gt; , &lt;= , &gt;=</strong> - Relational</li>
+                    <li><strong>== , !=</strong> - Equality</li>
+                    <li><strong>&&</strong> - Logical AND</li>
+                    <li><strong>||</strong> - Logical OR</li>
+                    <li><strong>=</strong> - Assignment</li>
+                </ol>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+int main() {
+    int a = 10, b = 3;
+    
+    // Arithmetic
+    printf("Addition: %d\n", a + b);        // 13
+    printf("Modulus: %d\n", a % b);         // 1 (remainder)
+    
+    // Precedence
+    printf("10 + 5 * 2 = %d\n", 10 + 5 * 2);     // 20 (multiplication first)
+    printf("(10 + 5) * 2 = %d\n", (10 + 5) * 2); // 30 (parentheses first)
+    
+    // Relational
+    printf("10 > 5 = %d\n", 10 > 5);        // 1 (true)
+    
+    // Logical
+    printf("(10>5) && (3<8) = %d\n", (10>5) && (3<8)); // 1
+    
+    // Increment
+    int x = 5;
+    printf("++x = %d\n", ++x);              // 6 (pre-increment)
+    printf("x++ = %d\n", x++);              // 6 then becomes 7
+    return 0;
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li><strong>%</strong> only works with integers</li>
+                    <li><strong>++x</strong> increments then uses, <strong>x++</strong> uses then increments</li>
+                    <li>Relational operators return 1 (true) or 0 (false)</li>
+                    <li>Parentheses have the highest precedence</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. What is the output of: int x = 5 + 3 * 2; printf("%d", x);</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) 16</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) 11</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) 13</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) 10</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. Which operator has the highest precedence?</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) +</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) *</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) ()</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) =</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. What is the value of (10 > 5) && (3 < 8)?</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) 0</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) 1</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) 10</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) 5</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. What does % operator do in C?</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) Division</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) Modulus (remainder)</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) Percentage</label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) Address of</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. Output of: int a=10, b=20; printf("%d", a != b);</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) 0</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) 1</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) 10</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) 20</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. Which logical operator represents AND?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) ||</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) &</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) &&</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) |</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. What is the output of: int x=5; printf("%d", ++x);</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) 5</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) 6</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) 4</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) Error</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. Evaluate: 15 / 4 in integer arithmetic?</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) 3.75</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) 3</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) 4</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) 3.0</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. Which operator is used for "not equal to"?</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) =!</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) !=</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) <></label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) !==</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. What is the value of (5 > 3) ? 10 : 20 ? (Ternary operator)</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) 20</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) 10</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) 5</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) 3</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING QUESTIONS SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Write a program to swap two numbers without using a third variable.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int a = 5, b = 10;
+    printf("Before: a=%d, b=%d\n", a, b);
+    a = a + b;
+    b = a - b;
+    a = a - b;
+    printf("After: a=%d, b=%d\n", a, b);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Write a program to check if a number is even or odd using ternary operator.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int num = 7;
+    (num % 2 == 0) ? printf("Even") : printf("Odd");
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Write a program to demonstrate operator precedence: compute 10 + 20 * 30 / 10.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int result = 10 + 20 * 30 / 10;
+    // 20*30=600, 600/10=60, 10+60=70
+    printf("Result: %d\n", result);
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'b', q2:'c', q3:'b', q4:'b', q5:'b', q6:'c', q7:'b', q8:'b', q9:'b', q10:'b'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
