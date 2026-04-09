@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>📊 Arrays</h1>
+            <p>1D Arrays, 2D Arrays, Matrix Operations</p>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>What is an Array?</h3>
+                <p>Array is a collection of elements of the same data type stored in contiguous memory locations.</p>
+
+                <h3>1D Array (One-Dimensional):</h3>
+                <ul>
+                    <li><strong>Declaration:</strong> datatype arrayName[size];</li>
+                    <li><strong>Example:</strong> int marks[5];</li>
+                    <li><strong>Initialization:</strong> int marks[5] = {85, 90, 78, 92, 88};</li>
+                    <li><strong>Access:</strong> marks[0] = first element (index starts at 0)</li>
+                </ul>
+
+                <h3>2D Array (Two-Dimensional):</h3>
+                <ul>
+                    <li><strong>Declaration:</strong> datatype arrayName[rows][columns];</li>
+                    <li><strong>Example:</strong> int matrix[3][4];</li>
+                    <li><strong>Initialization:</strong> int matrix[2][3] = {{1,2,3},{4,5,6}};</li>
+                    <li><strong>Access:</strong> matrix[row][col]</li>
+                </ul>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+int main() {
+    // 1D Array - find max and sum
+    int arr[5] = {10, 20, 30, 40, 50};
+    int sum = 0, max = arr[0];
+    
+    for(int i = 0; i < 5; i++) {
+        sum += arr[i];
+        if(arr[i] > max) max = arr[i];
+    }
+    printf("Sum: %d, Max: %d\n", sum, max);  // Sum: 150, Max: 50
+    
+    // 2D Array - matrix addition
+    int A[2][2] = {{1,2},{3,4}};
+    int B[2][2] = {{5,6},{7,8}};
+    int C[2][2];
+    
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 2; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+    // Output:
+    // 6 8
+    // 10 12
+    
+    // Finding largest in 2D
+    int mat[2][3] = {{3,7,2},{9,4,6}};
+    int largest = mat[0][0];
+    for(int i = 0; i < 2; i++) {
+        for(int j = 0; j < 3; j++) {
+            if(mat[i][j] > largest) largest = mat[i][j];
+        }
+    }
+    printf("Largest: %d\n", largest);  // Largest: 9
+    
+    return 0;
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li>Array index starts from <strong>0</strong> to size-1</li>
+                    <li>No bounds checking in C - be careful!</li>
+                    <li>Array name represents the base address (address of first element)</li>
+                    <li>2D arrays are stored in row-major order</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. What is the index of the first element in an array?</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) 1</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) 0</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) -1</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) Any</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. int arr[5] = {1,2,3}; What is arr[3]?</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) 3</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) 0</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) Garbage</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) Error</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. How to declare a 2D array with 3 rows and 4 columns?</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) arr[3,4]</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) arr[3][4]</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) arr(3)(4)</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) arr{3}{4}</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. What is the output? int arr[3] = {10,20,30}; printf("%d", arr[1]);</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) 10</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) 20</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) 30</label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) Error</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. What is the size of int arr[10]? (assuming int is 4 bytes)</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) 10 bytes</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) 20 bytes</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) 40 bytes</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) 4 bytes</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. Which loop is best to traverse an array?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) while</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) do-while</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) for</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) All are same</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. What is arr[2][1] in int arr[3][3] = {{1,2,3},{4,5,6},{7,8,9}}?</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) 4</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) 5</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) 6</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) 8</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. What happens if you try to access arr[10] when array size is 5?</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) Compiler error</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) Runtime error</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) Garbage value (undefined behavior)</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) Returns 0</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. How to find number of elements in an array? int arr[] = {1,2,3,4,5};</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) sizeof(arr)</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) sizeof(arr)/sizeof(arr[0])</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) length(arr)</label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) arr.length</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. What is the output? int mat[2][2] = {{1,2},{3,4}}; printf("%d", mat[1][0]);</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) 1</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) 2</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) 3</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) 4</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Write a program to reverse an array.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int arr[] = {1,2,3,4,5};
+    int n = 5, temp;
+    
+    printf("Original: ");
+    for(int i=0; i<n; i++) printf("%d ", arr[i]);
+    
+    for(int i=0; i<n/2; i++) {
+        temp = arr[i];
+        arr[i] = arr[n-1-i];
+        arr[n-1-i] = temp;
+    }
+    
+    printf("\nReversed: ");
+    for(int i=0; i<n; i++) printf("%d ", arr[i]);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Write a program to find the second largest element in an array.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int arr[] = {10, 20, 5, 30, 15};
+    int n = 5, largest = arr[0], second = -1;
+    
+    for(int i=1; i<n; i++) {
+        if(arr[i] > largest) {
+            second = largest;
+            largest = arr[i];
+        } else if(arr[i] > second && arr[i] != largest) {
+            second = arr[i];
+        }
+    }
+    printf("Second largest: %d", second);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Write a program to add two 2x2 matrices.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    int A[2][2] = {{1,2},{3,4}};
+    int B[2][2] = {{5,6},{7,8}};
+    int C[2][2];
+    
+    for(int i=0; i<2; i++) {
+        for(int j=0; j<2; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+            printf("%d ", C[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'b', q2:'b', q3:'b', q4:'b', q5:'c', q6:'c', q7:'d', q8:'c', q9:'b', q10:'c'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
