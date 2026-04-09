@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pointers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>🎯 Pointers</h1>
+            <p>Pointer Definition, Operations, Array of Pointers, Self-referential Structures, Call by Reference</p>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>What is a Pointer?</h3>
+                <p>A pointer is a variable that stores the memory address of another variable.</p>
+
+                <h3>Pointer Syntax:</h3>
+                <ul>
+                    <li><strong>Declaration:</strong> datatype *ptr_name;</li>
+                    <li><strong>Address of operator (&):</strong> Returns memory address</li>
+                    <li><strong>Dereference operator (*):</strong> Accesses value at address</li>
+                </ul>
+
+                <h3>Pointer Operations:</h3>
+                <ul>
+                    <li><strong>Assignment:</strong> ptr = &var;</li>
+                    <li><strong>Dereferencing:</strong> *ptr = value;</li>
+                    <li><strong>Pointer Arithmetic:</strong> ptr++ (moves to next element), ptr--</li>
+                    <li><strong>Comparison:</strong> ptr1 == ptr2</li>
+                </ul>
+
+                <h3>Array of Pointers:</h3>
+                <pre>int *ptr_arr[10];  // Array of 10 integer pointers
+char *names[5] = {"John", "Jane", "Bob", "Alice", "Tom"};</pre>
+
+                <h3>Self-referential Structures:</h3>
+                <p>Structures that contain a pointer to the same structure type - used for linked lists, trees.</p>
+                <pre>struct Node {
+    int data;
+    struct Node *next;  // Pointer to same structure
+};</pre>
+
+                <h3>Call by Reference using Pointers:</h3>
+                <p>Passing addresses to functions allows modification of original variables.</p>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+
+// Self-referential structure for linked list
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+// Call by reference - swap function
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    // Basic pointer
+    int num = 42;
+    int *ptr = &num;
+    
+    printf("Value: %d\n", num);
+    printf("Address: %p\n", &num);
+    printf("Pointer stores: %p\n", ptr);
+    printf("Dereferenced: %d\n", *ptr);
+    
+    // Modify through pointer
+    *ptr = 99;
+    printf("Modified value: %d\n", num);
+    
+    // Pointer arithmetic with arrays
+    int arr[] = {10, 20, 30, 40, 50};
+    int *p = arr;  // Points to first element
+    
+    for(int i = 0; i < 5; i++) {
+        printf("*(p+%d) = %d\n", i, *(p + i));
+    }
+    
+    // Array of pointers to strings
+    char *fruits[] = {"Apple", "Banana", "Cherry", "Date"};
+    for(int i = 0; i < 4; i++) {
+        printf("%s\n", fruits[i]);
+    }
+    
+    // Call by reference
+    int x = 10, y = 20;
+    printf("\nBefore swap: x=%d, y=%d\n", x, y);
+    swap(&x, &y);
+    printf("After swap: x=%d, y=%d\n", x, y);
+    
+    // Self-referential structure example
+    struct Node n1, n2;
+    n1.data = 100;
+    n1.next = &n2;
+    n2.data = 200;
+    n2.next = NULL;
+    
+    printf("\nLinked list node1: %d, node2: %d\n", n1.data, n1.next->data);
+    
+    return 0;
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li>Pointer size is same for all types (8 bytes on 64-bit system)</li>
+                    <li>NULL pointer points to nothing (dereferencing causes crash)</li>
+                    <li>Array name is a constant pointer to first element</li>
+                    <li>Self-referential structures are building blocks for data structures</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. What does the & operator do?</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) Dereferences pointer</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) Returns address of variable</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) Multiplies values</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) Creates pointer</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. How do you declare a pointer to an integer?</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) int &ptr;</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) int *ptr;</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) ptr int*;</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) int ptr*;</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. What is the output? int a=5; int *p=&a; *p=10; printf("%d", a);</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) 5</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) 10</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) Error</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) Garbage</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. If int arr[5], what does arr represent?</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) First element value</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) Address of first element</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) Size of array</label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) Last element</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. What is a NULL pointer?</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) Pointer to address 0</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) Pointer that points to nothing</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) Both A and B</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) Invalid pointer</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. What is pointer arithmetic?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) Adding numbers to pointers</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) Moving pointer to next memory location</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) Both A and B</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) Not allowed in C</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. How do you access structure member using pointer?</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) ptr.member</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) ptr->member</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) *ptr.member</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) &ptr.member</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. What is a self-referential structure?</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) Structure that points to itself</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) Structure with pointer to same type</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) Both A and B</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) Structure with no members</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. What is the size of a pointer on 64-bit system?</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) 4 bytes</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) 8 bytes</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) Depends on data type</label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) 2 bytes</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. Which of these correctly swaps two variables using pointers?</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) void swap(int a, int b){int t=a;a=b;b=t;}</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) void swap(int *a, int *b){int t=*a;*a=*b;*b=t;}</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) void swap(int &a, int &b){int t=a;a=b;b=t;}</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) void swap(*a, *b){int t=a;a=b;b=t;}</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Write a program to find the length of a string using pointers (without strlen).</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+int stringLength(char *str) {
+    int len = 0;
+    while(*str != '\0') {
+        len++;
+        str++;
+    }
+    return len;
+}
+int main() {
+    char str[] = "Hello World";
+    printf("Length: %d", stringLength(str));
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Reverse an array using pointers.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+void reverseArray(int *arr, int size) {
+    int *start = arr;
+    int *end = arr + size - 1;
+    int temp;
+    
+    while(start < end) {
+        temp = *start;
+        *start = *end;
+        *end = temp;
+        start++;
+        end--;
+    }
+}
+int main() {
+    int arr[] = {1,2,3,4,5};
+    int size = 5;
+    
+    reverseArray(arr, size);
+    
+    for(int i = 0; i < size; i++) {
+        printf("%d ", arr[i]);
+    }
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Create a self-referential structure for a simple linked list node and demonstrate.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+int main() {
+    struct Node n1, n2, n3;
+    struct Node *head = &n1;
+    
+    n1.data = 10;
+    n1.next = &n2;
+    
+    n2.data = 20;
+    n2.next = &n3;
+    
+    n3.data = 30;
+    n3.next = NULL;
+    
+    // Traverse linked list
+    struct Node *current = head;
+    while(current != NULL) {
+        printf("%d -> ", current->data);
+        current = current->next;
+    }
+    printf("NULL\n");
+    
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'b', q2:'b', q3:'b', q4:'b', q5:'c', q6:'c', q7:'b', q8:'c', q9:'b', q10:'b'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
