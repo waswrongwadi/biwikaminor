@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structures & Unions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>🏗️ Structures & Unions</h1>
+            <p>Defining Structures, Array of Structures, Nested Structures, Unions, Structure vs Union</p>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>What is a Structure?</h3>
+                <p>A structure is a user-defined data type that groups different data types together.</p>
+
+                <h3>Structure Syntax:</h3>
+                <pre>struct structure_name {
+    datatype member1;
+    datatype member2;
+    ...
+};</pre>
+
+                <h3>Declaring and Using Structures:</h3>
+                <pre>// Define structure
+struct Student {
+    int rollNo;
+    char name[50];
+    float marks;
+};
+
+// Create variable
+struct Student s1;
+
+// Access members using dot operator
+s1.rollNo = 101;
+strcpy(s1.name, "John");
+s1.marks = 85.5;</pre>
+
+                <h3>Array of Structures:</h3>
+                <pre>struct Student class[30];  // Array of 30 students</pre>
+
+                <h3>Nested Structures (Structure within Structure):</h3>
+                <pre>struct Date {
+    int day, month, year;
+};
+
+struct Employee {
+    int id;
+    char name[50];
+    struct Date joiningDate;  // Nested structure
+};</pre>
+
+                <h3>What is a Union?</h3>
+                <p>Union is similar to structure but members share the same memory location. Only one member can hold value at a time.</p>
+
+                <h3>Structure vs Union:</h3>
+                <ul>
+                    <li><strong>Structure:</strong> Each member has its own memory (sum of all members)</li>
+                    <li><strong>Union:</strong> All members share same memory (size of largest member)</li>
+                    <li>Union is memory efficient but can only store one value at a time</li>
+                </ul>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+// Structure
+struct Student {
+    int roll;
+    char name[50];
+    float marks;
+};
+
+// Nested structures
+struct Address {
+    char city[50];
+    int pincode;
+};
+
+struct Employee {
+    int id;
+    char name[50];
+    struct Address addr;  // Nested
+};
+
+// Union
+union Data {
+    int i;
+    float f;
+    char str[20];
+};
+
+int main() {
+    // Basic structure
+    struct Student s1 = {101, "Alice", 85.5};
+    printf("Student: %d, %s, %.2f\n", s1.roll, s1.name, s1.marks);
+    
+    // Array of structures
+    struct Student class[3] = {
+        {1, "Bob", 90},
+        {2, "Carol", 88},
+        {3, "David", 92}
+    };
+    
+    for(int i = 0; i < 3; i++) {
+        printf("%d: %s - %.2f\n", class[i].roll, class[i].name, class[i].marks);
+    }
+    
+    // Nested structure
+    struct Employee e1 = {1001, "John", {"Mumbai", 400001}};
+    printf("Employee: %s from %s\n", e1.name, e1.addr.city);
+    
+    // Union demonstration
+    union Data u;
+    printf("Size of union: %lu bytes\n", sizeof(u));
+    
+    u.i = 10;
+    printf("Integer: %d\n", u.i);
+    
+    u.f = 3.14;
+    printf("Float: %.2f (int is now garbage: %d)\n", u.f, u.i);
+    
+    return 0;
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li>Use dot (.) operator for structure variables</li>
+                    <li>Use arrow (->) operator for structure pointers</li>
+                    <li>Union size = size of largest member</li>
+                    <li>Only one union member can be active at a time</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. How are structure members accessed?</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) :: operator</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) . operator</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) -> operator</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) Both B and C (depending on variable/pointer)</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. What is the size of union if it has int(4 bytes), float(4 bytes), char(1 byte)?</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) 9 bytes</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) 4 bytes</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) 1 byte</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) 8 bytes</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. What is the keyword to define a structure?</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) struct</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) union</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) typedef</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) class</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. Which operator is used to access structure members via pointer?</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) .</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) &</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) -></label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) *</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. In a union, how many members can hold value at a time?</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) All members</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) Only one</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) Two</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) Depends</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. What is the correct way to declare an array of 10 structures?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) struct Student[10] s;</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) struct Student s[10];</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) Student s[10];</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) s[10] struct Student;</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. Structure vs Union - which is more memory efficient?</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) Structure</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) Union</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) Both same</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) Depends on compiler</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. Can a structure contain another structure?</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) Yes (nested structures)</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) No</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) Only if using pointers</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) Only in C++</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. What is the output? struct A{int x;}; struct A a1 = {5}; struct A a2 = a1; a2.x = 10; printf("%d", a1.x);</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) 10</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) 5</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) Error</label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) Garbage</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. Which of these can be stored in a union?</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) Multiple values simultaneously</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) Only one value at a time</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) No values</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) Only integers</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Create a structure for Book (title, author, price). Store 5 books and display the most expensive one.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+struct Book {
+    char title[50];
+    char author[50];
+    float price;
+};
+
+int main() {
+    struct Book books[5] = {
+        {"C Programming", "K&R", 450},
+        {"Python Basics", "Smith", 350},
+        {"Java Complete", "Jones", 550},
+        {"Data Structures", "Lee", 480},
+        {"Algorithms", "Cormen", 650}
+    };
+    
+    int maxIndex = 0;
+    for(int i = 1; i < 5; i++) {
+        if(books[i].price > books[maxIndex].price)
+            maxIndex = i;
+    }
+    
+    printf("Most expensive book:\n");
+    printf("Title: %s\nAuthor: %s\nPrice: %.2f",
+           books[maxIndex].title, books[maxIndex].author, books[maxIndex].price);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Write a program to add two complex numbers using structures.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+
+struct Complex {
+    float real;
+    float imag;
+};
+
+struct Complex add(struct Complex c1, struct Complex c2) {
+    struct Complex result;
+    result.real = c1.real + c2.real;
+    result.imag = c1.imag + c2.imag;
+    return result;
+}
+
+int main() {
+    struct Complex a = {3.5, 2.5};
+    struct Complex b = {1.5, 4.5};
+    struct Complex sum = add(a, b);
+    
+    printf("Sum: %.1f + %.1fi", sum.real, sum.imag);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Demonstrate difference between structure and union (show memory sizes and behavior).</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+
+struct StructData {
+    int i;
+    float f;
+    char c;
+};
+
+union UnionData {
+    int i;
+    float f;
+    char c;
+};
+
+int main() {
+    struct StructData s;
+    union UnionData u;
+    
+    printf("Structure size: %lu bytes\n", sizeof(s));
+    printf("Union size: %lu bytes\n\n", sizeof(u));
+    
+    // Structure - all members independent
+    s.i = 10;
+    s.f = 3.14;
+    s.c = 'A';
+    printf("Structure: i=%d, f=%.2f, c=%c\n", s.i, s.f, s.c);
+    
+    // Union - only last assigned is valid
+    u.i = 10;
+    printf("Union after i=10: i=%d\n", u.i);
+    
+    u.f = 3.14;
+    printf("Union after f=3.14: f=%.2f, i=%d (garbage)\n", u.f, u.i);
+    
+    u.c = 'A';
+    printf("Union after c='A': c=%c, f=%.2f (garbage)\n", u.c, u.f);
+    
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'d', q2:'b', q3:'a', q4:'c', q5:'b', q6:'b', q7:'b', q8:'a', q9:'b', q10:'b'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
