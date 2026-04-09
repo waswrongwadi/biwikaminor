@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strings</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>📝 Strings</h1>
+            <p>Character Arrays, String Functions, Palindrome, Vowel Count</p>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>What are Strings in C?</h3>
+                <p>Strings are character arrays terminated by a null character '\0'.</p>
+
+                <h3>Declaration and Initialization:</h3>
+                <ul>
+                    <li><strong>char str[20];</strong> - Can hold 19 characters + null</li>
+                    <li><strong>char name[] = "Hello";</strong> - Size automatically calculated (6 bytes: H,e,l,l,o,\0)</li>
+                    <li><strong>char str[5] = {'H','e','l','l','o','\0'};</strong> - Explicit null terminator</li>
+                </ul>
+
+                <h3>String Input/Output:</h3>
+                <ul>
+                    <li><strong>scanf("%s", str);</strong> - Reads until whitespace (no & needed)</li>
+                    <li><strong>gets(str);</strong> - Reads entire line (unsafe, avoid)</li>
+                    <li><strong>fgets(str, size, stdin);</strong> - Safe way to read string</li>
+                    <li><strong>printf("%s", str);</strong> - Prints string</li>
+                    <li><strong>puts(str);</strong> - Prints string and adds newline</li>
+                </ul>
+
+                <h3>Common String Functions (string.h):</h3>
+                <ul>
+                    <li><strong>strlen(str)</strong> - Returns length of string (excluding null)</li>
+                    <li><strong>strcpy(dest, src)</strong> - Copies src to dest</li>
+                    <li><strong>strcat(dest, src)</strong> - Appends src to dest</li>
+                    <li><strong>strcmp(str1, str2)</strong> - Compares strings (0 if equal)</li>
+                    <li><strong>strchr(str, ch)</strong> - Finds first occurrence of character</li>
+                    <li><strong>strstr(str, substr)</strong> - Finds substring</li>
+                </ul>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    // String length manually
+    char str[] = "Hello";
+    int len = 0;
+    while(str[len] != '\0') len++;
+    printf("Length: %d\n", len);  // 5
+    
+    // Using strlen
+    printf("strlen: %lu\n", strlen(str));
+    
+    // String copy
+    char dest[20];
+    strcpy(dest, str);
+    printf("Copied: %s\n", dest);
+    
+    // String concatenation
+    char str1[50] = "Hello ";
+    char str2[] = "World";
+    strcat(str1, str2);
+    printf("Concatenated: %s\n", str1);
+    
+    // String comparison
+    if(strcmp("abc", "abc") == 0)
+        printf("Strings are equal\n");
+    
+    // Count vowels
+    char word[] = "Education";
+    int vowels = 0;
+    for(int i = 0; word[i] != '\0'; i++) {
+        char ch = tolower(word[i]);
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+            vowels++;
+    }
+    printf("Vowels: %d\n", vowels);  // 5
+    
+    return 0;
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li>Strings always end with <strong>'\0' (null character)</strong></li>
+                    <li>Don't forget to allocate space for null terminator</li>
+                    <li>strcmp returns 0 if strings are equal</li>
+                    <li>Use fgets() instead of gets() for safety</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. How is a string terminated in C?</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) .</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) \n</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) \0</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) /0</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. What is the output? char str[] = "Hello"; printf("%d", strlen(str));</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) 6</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) 5</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) 4</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) Error</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. Which function copies one string to another?</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) strcat</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) strcpy</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) strcmp</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) strlen</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. What is the output? char str[5] = "Hello";</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) Works fine</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) Error - not enough space for null</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) Prints Hello</label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) Prints Hell</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. What does strcmp("apple", "apple") return?</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) 1</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) -1</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) 0</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) Error</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. Which function appends one string to another?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) strcat</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) strcpy</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) strcmp</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) strlen</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. What is the correct way to read a string with spaces?</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) scanf("%s", str)</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) fgets(str, size, stdin)</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) getchar(str)</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) read(str)</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. What is the size of char str[] = "C Program";</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) 8</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) 9</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) 10</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) 7</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. Which header file contains string functions?</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) stdio.h</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) stdlib.h</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) string.h</label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) ctype.h</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. What is the output? char str[10] = "Hello"; str[2] = '\0'; printf("%s", str);</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) Hello</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) He</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) Hel</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) Error</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Write a program to check if a string is palindrome (reads same forwards and backwards).</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+int main() {
+    char str[] = "madam";
+    int len = strlen(str);
+    int isPalindrome = 1;
+    
+    for(int i = 0; i < len/2; i++) {
+        if(str[i] != str[len-1-i]) {
+            isPalindrome = 0;
+            break;
+        }
+    }
+    
+    if(isPalindrome) printf("%s is Palindrome", str);
+    else printf("%s is not Palindrome", str);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Write a program to count number of vowels in a string.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+int main() {
+    char str[] = "Education";
+    int vowels = 0;
+    
+    for(int i = 0; str[i] != '\0'; i++) {
+        char ch = tolower(str[i]);
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+            vowels++;
+    }
+    printf("Vowels: %d", vowels);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Write a program to reverse a string without using library function.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+int main() {
+    char str[] = "Hello";
+    int len = 0, temp;
+    
+    // Find length
+    while(str[len] != '\0') len++;
+    
+    // Reverse
+    for(int i = 0; i < len/2; i++) {
+        temp = str[i];
+        str[i] = str[len-1-i];
+        str[len-1-i] = temp;
+    }
+    
+    printf("Reversed: %s", str);
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'c', q2:'b', q3:'b', q4:'b', q5:'c', q6:'a', q7:'b', q8:'c', q9:'c', q10:'b'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
