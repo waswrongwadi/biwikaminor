@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="1.html" class="back-btn">← Back to Menu</a>
+        <div class="header">
+            <h1>⚙️ Functions</h1>
+            <p>User Defined Functions, Call by Value, Scope, Arrays to Functions</p>
+        </div>
+
+        <!-- THEORY SECTION -->
+        <div class="theory-section">
+            <h2>📖 Learn the Theory</h2>
+            <div class="theory-box">
+                <h3>What is a Function?</h3>
+                <p>A function is a block of code that performs a specific task. It promotes code reusability and modularity.</p>
+
+                <h3>Function Syntax:</h3>
+                <pre>return_type function_name(parameter_list) {
+    // function body
+    return value;
+}</pre>
+
+                <h3>Function Components:</h3>
+                <ul>
+                    <li><strong>Return type:</strong> Data type of value returned (void if nothing returned)</li>
+                    <li><strong>Function name:</strong> Unique identifier</li>
+                    <li><strong>Parameters:</strong> Inputs to the function (optional)</li>
+                    <li><strong>Function body:</strong> Code that executes</li>
+                </ul>
+
+                <h3>Call by Value vs Call by Reference:</h3>
+                <ul>
+                    <li><strong>Call by Value:</strong> Copy of variable passed. Changes inside function do NOT affect original.</li>
+                    <li><strong>Call by Reference:</strong> Address of variable passed using pointers. Changes affect original.</li>
+                </ul>
+
+                <h3>Scope and Lifetime:</h3>
+                <ul>
+                    <li><strong>Local variables:</strong> Declared inside function, accessible only within that function</li>
+                    <li><strong>Global variables:</strong> Declared outside all functions, accessible everywhere</li>
+                    <li><strong>Static variables:</strong> Retain value between function calls</li>
+                </ul>
+
+                <h3>Passing Arrays to Functions:</h3>
+                <p>Arrays are always passed by reference (address is passed, not copy).</p>
+
+                <h3>Examples:</h3>
+                <pre>#include &lt;stdio.h&gt;
+
+// Function prototype
+int add(int a, int b);
+void swapByValue(int a, int b);
+void swapByReference(int *a, int *b);
+int sumArray(int arr[], int size);
+void printMessage();
+
+// Global variable
+int global = 100;
+
+int main() {
+    // Call by value
+    int x = 10, y = 20;
+    printf("Add: %d\n", add(x, y));  // 30
+    
+    // Swap demonstration
+    printf("\nBefore swap: x=%d, y=%d\n", x, y);
+    swapByValue(x, y);
+    printf("After swapByValue: x=%d, y=%d (no change)\n", x, y);
+    swapByReference(&x, &y);
+    printf("After swapByReference: x=%d, y=%d (changed!)\n", x, y);
+    
+    // Array to function
+    int arr[] = {1,2,3,4,5};
+    printf("\nSum of array: %d\n", sumArray(arr, 5));
+    
+    // Static variable example
+    printMessage();
+    printMessage();
+    printMessage();
+    
+    return 0;
+}
+
+// Function definitions
+int add(int a, int b) {
+    return a + b;
+}
+
+void swapByValue(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+void swapByReference(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int sumArray(int arr[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+void printMessage() {
+    static int count = 0;  // Static - retains value
+    count++;
+    printf("Called %d times\n", count);
+}</pre>
+
+                <h3>Key Points to Remember:</h3>
+                <ul>
+                    <li>Function prototype is required before calling (or define before main)</li>
+                    <li>Arrays are automatically passed by reference (no & needed)</li>
+                    <li>Static variables are initialized only once</li>
+                    <li>void functions don't return anything</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- MCQ SECTION -->
+        <div class="mcq-section">
+            <h2>📝 Test Yourself: 10 MCQs</h2>
+            
+            <div class="mcq-question" id="q1">
+                <p>1. What is the default return type of a function if not specified?</p>
+                <label class="option"><input type="radio" name="q1" value="a"> A) void</label>
+                <label class="option"><input type="radio" name="q1" value="b"> B) int</label>
+                <label class="option"><input type="radio" name="q1" value="c"> C) float</label>
+                <label class="option"><input type="radio" name="q1" value="d"> D) char</label>
+                <div class="result" id="r1"></div>
+            </div>
+
+            <div class="mcq-question" id="q2">
+                <p>2. In call by value, changes inside function affect original variable?</p>
+                <label class="option"><input type="radio" name="q2" value="a"> A) Yes</label>
+                <label class="option"><input type="radio" name="q2" value="b"> B) No</label>
+                <label class="option"><input type="radio" name="q2" value="c"> C) Sometimes</label>
+                <label class="option"><input type="radio" name="q2" value="d"> D) Depends on compiler</label>
+                <div class="result" id="r2"></div>
+            </div>
+
+            <div class="mcq-question" id="q3">
+                <p>3. Which keyword is used to make a variable retain its value between function calls?</p>
+                <label class="option"><input type="radio" name="q3" value="a"> A) const</label>
+                <label class="option"><input type="radio" name="q3" value="b"> B) global</label>
+                <label class="option"><input type="radio" name="q3" value="c"> C) static</label>
+                <label class="option"><input type="radio" name="q3" value="d"> D) register</label>
+                <div class="result" id="r3"></div>
+            </div>
+
+            <div class="mcq-question" id="q4">
+                <p>4. What is the output? void fun(int x){ x=10; } int main(){ int a=5; fun(a); printf("%d",a); }</p>
+                <label class="option"><input type="radio" name="q4" value="a"> A) 10</label>
+                <label class="option"><input type="radio" name="q4" value="b"> B) 5</label>
+                <label class="option"><input type="radio" name="q4" value="c"> C) Error</label>
+                <label class="option"><input type="radio" name="q4" value="d"> D) Garbage</label>
+                <div class="result" id="r4"></div>
+            </div>
+
+            <div class="mcq-question" id="q5">
+                <p>5. How do you pass an array to a function?</p>
+                <label class="option"><input type="radio" name="q5" value="a"> A) By value only</label>
+                <label class="option"><input type="radio" name="q5" value="b"> B) By reference only</label>
+                <label class="option"><input type="radio" name="q5" value="c"> C) Both by value and reference</label>
+                <label class="option"><input type="radio" name="q5" value="d"> D) Arrays cannot be passed</label>
+                <div class="result" id="r5"></div>
+            </div>
+
+            <div class="mcq-question" id="q6">
+                <p>6. Where are local variables stored?</p>
+                <label class="option"><input type="radio" name="q6" value="a"> A) Heap</label>
+                <label class="option"><input type="radio" name="q6" value="b"> B) Stack</label>
+                <label class="option"><input type="radio" name="q6" value="c"> C) Data segment</label>
+                <label class="option"><input type="radio" name="q6" value="d"> D) Code segment</label>
+                <div class="result" id="r6"></div>
+            </div>
+
+            <div class="mcq-question" id="q7">
+                <p>7. What is a function prototype?</p>
+                <label class="option"><input type="radio" name="q7" value="a"> A) Function definition</label>
+                <label class="option"><input type="radio" name="q7" value="b"> B) Function declaration</label>
+                <label class="option"><input type="radio" name="q7" value="c"> C) Function call</label>
+                <label class="option"><input type="radio" name="q7" value="d"> D) Function return</label>
+                <div class="result" id="r7"></div>
+            </div>
+
+            <div class="mcq-question" id="q8">
+                <p>8. Global variables are accessible from which functions?</p>
+                <label class="option"><input type="radio" name="q8" value="a"> A) Only main</label>
+                <label class="option"><input type="radio" name="q8" value="b"> B) Only functions that declare them</label>
+                <label class="option"><input type="radio" name="q8" value="c"> C) All functions in the program</label>
+                <label class="option"><input type="radio" name="q8" value="d"> D) No functions</label>
+                <div class="result" id="r8"></div>
+            </div>
+
+            <div class="mcq-question" id="q9">
+                <p>9. What does the return statement do?</p>
+                <label class="option"><input type="radio" name="q9" value="a"> A) Exits the program</label>
+                <label class="option"><input type="radio" name="q9" value="b"> B) Exits the function and returns value</label>
+                <label class="option"><input type="radio" name="q9" value="c"> C) Continues execution</label>
+                <label class="option"><input type="radio" name="q9" value="d"> D) Restarts the function</label>
+                <div class="result" id="r9"></div>
+            </div>
+
+            <div class="mcq-question" id="q10">
+                <p>10. What is the output of this recursive function? int fact(int n){ if(n==1) return 1; return n*fact(n-1); } fact(3);</p>
+                <label class="option"><input type="radio" name="q10" value="a"> A) 3</label>
+                <label class="option"><input type="radio" name="q10" value="b"> B) 6</label>
+                <label class="option"><input type="radio" name="q10" value="c"> C) 4</label>
+                <label class="option"><input type="radio" name="q10" value="d"> D) 2</label>
+                <div class="result" id="r10"></div>
+            </div>
+
+            <button class="check-btn" onclick="checkAnswers()">Check All Answers</button>
+        </div>
+
+        <!-- CODING SECTION -->
+        <div class="coding-section">
+            <h2>✍️ Coding Practice (3 Questions)</h2>
+            
+            <div class="coding-question">
+                <h3>Question 1</h3>
+                <p>Write a function to check if a number is Armstrong (sum of cubes of digits equals number).</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(1)">Show Solution</button>
+                <div class="answer" id="ans1">
+                    <pre>#include &lt;stdio.h&gt;
+int isArmstrong(int n) {
+    int original = n, sum = 0, digit;
+    while(n > 0) {
+        digit = n % 10;
+        sum += digit * digit * digit;
+        n /= 10;
+    }
+    return (sum == original);
+}
+int main() {
+    int num = 153;
+    if(isArmstrong(num)) printf("%d is Armstrong", num);
+    else printf("%d is not Armstrong", num);
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 2</h3>
+                <p>Write a function that accepts an array and returns the sum of even elements.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(2)">Show Solution</button>
+                <div class="answer" id="ans2">
+                    <pre>#include &lt;stdio.h&gt;
+int sumEven(int arr[], int size) {
+    int sum = 0;
+    for(int i = 0; i < size; i++) {
+        if(arr[i] % 2 == 0) sum += arr[i];
+    }
+    return sum;
+}
+int main() {
+    int arr[] = {1,2,3,4,5,6};
+    printf("Sum of evens: %d", sumEven(arr, 6));
+    return 0;
+}</pre>
+                </div>
+            </div>
+
+            <div class="coding-question">
+                <h3>Question 3</h3>
+                <p>Write a program demonstrating static variable - count how many times function is called.</p>
+                <button class="show-answer-btn" onclick="toggleAnswer(3)">Show Solution</button>
+                <div class="answer" id="ans3">
+                    <pre>#include &lt;stdio.h&gt;
+void counter() {
+    static int count = 0;
+    count++;
+    printf("Function called %d times\n", count);
+}
+int main() {
+    counter();
+    counter();
+    counter();
+    return 0;
+}</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {q1:'b', q2:'b', q3:'c', q4:'b', q5:'b', q6:'b', q7:'b', q8:'c', q9:'b', q10:'b'};
+        
+        function checkAnswers() {
+            for(let i=1; i<=10; i++) {
+                let selected = document.querySelector(`input[name="q${i}"]:checked`);
+                let resultDiv = document.getElementById(`r${i}`);
+                if(selected) {
+                    if(selected.value === answers[`q${i}`]) {
+                        resultDiv.innerHTML = "✅ Correct!";
+                        resultDiv.className = "result correct";
+                    } else {
+                        resultDiv.innerHTML = `❌ Wrong! Correct answer is ${answers[`q${i}`].toUpperCase()}`;
+                        resultDiv.className = "result wrong";
+                    }
+                } else {
+                    resultDiv.innerHTML = "⚠️ Please select an answer";
+                    resultDiv.className = "result wrong";
+                }
+            }
+        }
+
+        function toggleAnswer(num) {
+            let ans = document.getElementById(`ans${num}`);
+            ans.style.display = ans.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
